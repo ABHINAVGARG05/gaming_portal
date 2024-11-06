@@ -1,5 +1,6 @@
 const express = require('express')
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
+const cors = require('cors');
 
 const connectDb = require('./db/dbConnection')
 require('dotenv').config();
@@ -7,6 +8,9 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3030
 connectDb();
+
+app.use(cors());
+app.use(express.json());
 
 const infoRoute = require('./routes/getAllScores')
 const addScore = require('./routes/addScore')

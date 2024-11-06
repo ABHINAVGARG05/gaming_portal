@@ -10,16 +10,16 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    Sudoko:[{
+    sudoku:[{
         type:Number
     }],
-    Snake:[{
+    snake:[{
         type:Number
     }],
-    Maze:[{
+    maze:[{
         type:Number
     }],
-    TempleRun:[{
+    templerun:[{
         type:Number
     }]
 })
