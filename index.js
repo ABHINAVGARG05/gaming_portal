@@ -2,7 +2,7 @@ const express = require('express')
 // const mongoose = require('mongoose')
 const cors = require('cors');
 
-const connectDb = require('./db/dbConnection')
+const connectDb = require('./api/db/dbConnection')
 require('dotenv').config();
 
 const app = express();
@@ -12,9 +12,9 @@ connectDb();
 app.use(cors());
 app.use(express.json());
 
-const infoRoute = require('./routes/getAllScores')
-const leaderBoard = require('./routes/leaderboard')
-const addScore = require('./routes/addScore')
+const infoRoute = require('./api/routes/getAllScores')
+const leaderBoard = require('./api/routes/leaderboard')
+const addScore = require('./api/routes/addScore')
 
 app.use('/',infoRoute)
 app.use('/score',addScore)
