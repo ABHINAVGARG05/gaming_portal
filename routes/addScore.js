@@ -34,6 +34,12 @@ router.post('/', async (req, res) => {
 
         // Update the user's score for the specific game
         const update = {};
+        if (user[game].length >= 5) {
+            return res.status(400).json({ 
+                error: `Maximum attempts reached for ${game}. You can only submit 5 scores.`,
+                success: false 
+            });
+        }
         update[game] = [...(user[game] || []), score];
         
         await User.findByIdAndUpdate(user._id, { $set: update });
