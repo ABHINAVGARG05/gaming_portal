@@ -12,15 +12,17 @@ connectDb();
 app.use(cors());
 app.use(express.json());
 
-const infoRoute = require('./api/routes/getAllScores')
 const leaderBoard = require('./api/routes/leaderboard')
 const addScore = require('./api/routes/addScore')
 
-app.use('/',infoRoute)
+app.get("/", (req, res)=>{
+  return res.send("Welcome to GAME PORTAL BE");
+})
 app.use('/score',addScore)
 app.use('/leaderBoard',leaderBoard)
 
 app.listen(PORT,()=>{
     console.log("Welcome")
     console.log(`App listneing on Port ${PORT}`)
+    console.log(`http://localhost:${PORT}/`);
 })
