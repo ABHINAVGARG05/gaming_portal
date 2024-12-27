@@ -21,7 +21,12 @@ const userSchema = new mongoose.Schema({
     }],
     templerun:[{
         type:Number
-    }]
+    }],
+    role:{
+        type:String,
+        default:'user',
+        enum:['user','admin']
+    }
 })
 
 module.exports = mongoose.model('userSchema',userSchema)

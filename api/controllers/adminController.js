@@ -1,10 +1,13 @@
-const mongoose = require('mongoose')
-const express = require('express');
-const User = require('../models/userModel')
+const User = require("../models/userModel")
 
-const router = express.Router();
+//get all users
+exports.getAllUsers = async (req,res)=>{
+    const data = await User.find({role: { $in: ["admin", "user"] }})
+    res.status(200).json(data);
+}
 
-router.get("/",async (req,res)=>{
+//get leaderboard
+exports.leaderboard = async (req,res)=>{
     try{
         const leaderBoard = await User.aggregate([
                 {
@@ -73,6 +76,5 @@ router.get("/",async (req,res)=>{
         console.error(error)
         return res.status(400).json("Cannot fetch LeaderBoard")
     }
-})
+}
 
-module.exports = router;
